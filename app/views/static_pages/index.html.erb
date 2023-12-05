@@ -1,0 +1,18 @@
+<h1>Get Flickr user photos!</h1>
+
+<%= form_with url: '/', method: 'get' do |f| %>
+  <div>
+    <%= f.label :user_id, "User ID" %>
+    <%= f.text_field :user_id, value: '199655485@N03' %>
+  </div>
+
+  <div>
+    <%= f.submit "View Images" %>
+  </div>
+<% end %>
+
+<% if @img %>
+  <% @img.each do |img| %>
+    <%= image_tag "#{Flickr.url(img)}" %>
+  <% end %>
+<% end %>
